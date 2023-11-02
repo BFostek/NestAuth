@@ -1,8 +1,12 @@
-import { Controller, HttpCode, HttpStatus} from '@nestjs/common';
+import { Controller, HttpCode, HttpStatus } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
 import { Body, Post } from '@nestjs/common';
 import { SignUpDto } from './dto/sign-up.dto/sign-up.dto';
 import { SignInDto } from './dto/sign-in.dto/sign-in.dto';
+import { Auth } from './decorators/auth.decorators';
+
+import { AuthType } from './enums/auth-type.enum';
+@Auth(AuthType.None)
 @Controller('authentication')
 export class AuthenticationController {
   constructor(private readonly authService: AuthenticationService) {
